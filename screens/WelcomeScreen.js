@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import db from '../Config';
 import firebase from 'firebase';
-import SantaAnimation from '../components/SantaClaus.js';
+// import SantaAnimation from '../components/SantaClaus.js';
 
 
 export default class Welcome extends Component
@@ -66,7 +66,7 @@ export default class Welcome extends Component
     userLogin = (emailId, password)=>{
       firebase.auth().signInWithEmailAndPassword(emailId, password)
       .then(()=>{
-        return Alert.alert("Successfully Login")
+        this.props.navigation.navigate('Donate')
       })
       .catch((error)=> {
         var errorCode = error.code;
@@ -198,7 +198,7 @@ showModal = ()=>{
             this.showModal()
           }
         <View style={{justifyContent:'center', alignItems:'center'}}>
-          <SantaAnimation/>
+          {/* <SantaAnimation/> */}
           <Text style={styles.title}>Book Santa</Text>
         </View>
         <View>
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
  registerButtonText:{
    color:'#ff5722',
    fontSize:15,
-   fontWeight:'bold'
+   fontWeight:"bold"
  },
  cancelButton:{
    width:200,
